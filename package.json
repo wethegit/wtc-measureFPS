@@ -1,6 +1,6 @@
 {
   "name": "wtc-measure-fps",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Javascript class for measuring page FPS. Useful for throttling or cancelling CPU heavy routines.",
   "main": "dist/wtc-measure-fps.js",
   "scripts": {

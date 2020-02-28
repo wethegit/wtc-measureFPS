@@ -1,8 +1,7 @@
-
 /**
- * A singleton class that provides Framerate information for a website. When running, this will produce a 
+ * A singleton class that provides Framerate information for a website. When running, this will produce a
  * number of useful internal properties.
- * 
+ *
  * - current
  *   The current framerate
  * - low
@@ -11,19 +10,19 @@
  *   The average overall framerate
  * - average60
  *   The average framerate in the last 60 frames (ideally this is a second)
- * 
+ *
  * ## Usage
  * ```
  * let fps = utilities.getFPSMeasure();
  * console.log(fps.current); // 60
  * ```
- * 
+ *
  * When using this class, it is often fortiuitous to cycle it down and back up after a big FPS dip:
  * ```
  * fps.stop();
  * fps.start();
  * ```
- * 
+ *
  * @private
  * @class MeasureFPS
  */
@@ -32,7 +31,7 @@ class MeasureFPS {
     this.start();
   }
   start() {
-    if(this.running === true) return;
+    if (this.running === true) return;
 
     this.elapsedTime = 0;
     this.lastTime = 0;
@@ -60,24 +59,25 @@ class MeasureFPS {
       this.low = this.current;
     }
     if (!isNaN(parseInt(this.current))) {
-      this.averageOverall = (this.ticks * this.averageOverall + this.current) / (this.ticks + 1);
+      this.averageOverall =
+        (this.ticks * this.averageOverall + this.current) / (this.ticks + 1);
       if (this.ticks % 60 === 0) {
         this.average60 = 60;
       }
       tick60 = (this.ticks % 60) + 1;
       this.average60 = (tick60 * this.average60 + this.current) / (tick60 + 1);
     }
-    
-    if(this.running === true) {
+
+    if (this.running === true) {
       requestAnimationFrame(this.run.bind(this));
     }
   }
 }
 let measureFPSInstance = null;
 
-getFPSMeasure = function() {
-  if(measureFPSInstance === null) measureFPSInstance = new MeasureFPS();
+const getFPSMeasure = function() {
+  if (measureFPSInstance === null) measureFPSInstance = new MeasureFPS();
   return measureFPSInstance;
-}
+};
 
 export default getFPSMeasure;

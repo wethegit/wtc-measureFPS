@@ -12,9 +12,9 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 /**
- * A singleton class that provides Framerate information for a website. When running, this will produce a 
+ * A singleton class that provides Framerate information for a website. When running, this will produce a
  * number of useful internal properties.
- * 
+ *
  * - current
  *   The current framerate
  * - low
@@ -23,25 +23,23 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
  *   The average overall framerate
  * - average60
  *   The average framerate in the last 60 frames (ideally this is a second)
- * 
+ *
  * ## Usage
  * ```
  * let fps = utilities.getFPSMeasure();
  * console.log(fps.current); // 60
  * ```
- * 
+ *
  * When using this class, it is often fortiuitous to cycle it down and back up after a big FPS dip:
  * ```
  * fps.stop();
  * fps.start();
  * ```
- * 
+ *
  * @private
  * @class MeasureFPS
  */
-var MeasureFPS =
-/*#__PURE__*/
-function () {
+var MeasureFPS = /*#__PURE__*/function () {
   function MeasureFPS() {
     _classCallCheck(this, MeasureFPS);
 
@@ -102,7 +100,7 @@ function () {
 
 var measureFPSInstance = null;
 
-getFPSMeasure = function getFPSMeasure() {
+var getFPSMeasure = function getFPSMeasure() {
   if (measureFPSInstance === null) measureFPSInstance = new MeasureFPS();
   return measureFPSInstance;
 };
